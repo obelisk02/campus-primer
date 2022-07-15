@@ -1,37 +1,19 @@
-import express, { Express, Request,Response } from "express";
+import { LogSuccess } from './src/utils/loggers';
 import dotenv from 'dotenv';
+import server from './src/server/index';
+import { LogError } from './src/utils/loggers';
 
 
-dotenv.config();
 
-//Express app
-const app: Express = express();
-const port: string | number = process.env.PORT || 8000;
+dotenv.config()
+const port = process.env.PORT || 3000
 
+//Run server
+server.listen(port, ()=>{
+    LogSuccess(`[SERVER ON]: Runnin on port ${port}`)
+});
 
-app.get('/', (req:Request, res: Response) =>{
-    res.send (" typescript1")
-})
-
-app.get('/hello', (req:Request, res: Response) =>{
-    let name:string = req.query.name;
-    if (!name){ name= "Anonimo"}
-    
-    res.status(200).json({ 
-        data: "ok",
-        message: "Hola, " + name
-        
-        })
-})
-
-app.get('/bye', (req:Request, res: Response) =>{
-    res.status(200).json({ 
-        data: "ok", 
-        message: "Goodbye, world"
-        
-        })
-})
-
-app.listen ( port , ()=>{
-    console.log(`Server listening on port ${port}`);
+//Server error?
+server.on('error', (error)=>{
+    LogError(`[SERVER ERROR]: ${error}`)
 })

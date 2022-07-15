@@ -42,3 +42,28 @@ git push
 
 // Se esta ejecutando el yml de prueba, Checar en gitlab el pipeline hace un test (ocupo meter tarjeta de credito)
 - hizo un cambio al gitlab .yml 
+
+
+
+// Crear en -> utils/loggers.ts 
+- Un log que imprime message
+
+// Crea -> controller/interfaces/index.ts 
+- definir la estructura del comportamiento
+
+//  controller/types/index.ts 
+- Definir la estructura del objeto (para no usar Any) Definir la estructura message personalidzado
+
+// HelloController
+- es el controller main que se encarga de tirar las acciones, el types y interface son atachments para hacerlo bien(?)
+
+//Routes
+crea el helloRouter
+crea index.ts routes -> gestiona el root de routes
+
+//server
+crea el index.ts del Server
+-CORS
+    npm i cors helmet
+    npm i --save-dev @types/cors
+
